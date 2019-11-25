@@ -1,5 +1,5 @@
 # Makefile
-install: @babel/core @babel/cli @babel/node @babel/preset-env
+install:
 	npm install
 
 start:
