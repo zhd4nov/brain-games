@@ -7,7 +7,7 @@ const startGreet = () => {
 const requestUserName = () => readlineSync.question('\nWhat is your name, human? ');
 
 const greetUser = (userName) => {
-  console.log(`Hmm... Okay. Hello, ${userName}!`);
+  console.log(`Hmm... Okay. Hello, ${userName}...\n`);
 };
 
 export const startGame = () => {
@@ -29,7 +29,7 @@ const generateRandomQuestionNumber = (max = 150) => {
   return readyNumber;
 };
 
-const askQuestion = (questionNumber) => console.log(`\nQuestion: ${questionNumber}`);
+const askQuestion = (questionNumber) => console.log(`Question: ${questionNumber}`);
 
 const isEven = (number) => number % 2 === 0;
 
@@ -68,12 +68,13 @@ export const startBrainEven = () => {
 
     if (result === 'success') {
         successCounter += 1;
+        console.log(`Correct!`);
     } else {
-      console.log(`\n"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${userName}!`);
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${userName}!`);
       return;
     }
   }
 
-  console.log(`\nCongratulations ${userName}!`);
+  console.log(`Congratulations ${userName}!`);
   return;
 };
