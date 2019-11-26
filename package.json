@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/zhd4nov/frontend-project-lvl1#readme",
   "bin": {
-    "brain-games": "dist/bin/brain-games.js"
+    "brain-games": "dist/bin/brain-games.js",
+    "brain-even": "dist/bin/brain-even.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
