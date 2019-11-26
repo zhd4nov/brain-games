@@ -1,5 +1,5 @@
 # Makefile
-install: @babel/core @babel/cli @babel/node @babel/preset-env
+install:
 	npm install
 
 start:
@@ -7,3 +7,6 @@ start:
 
 publish:
 	npm publish --dry-run
+
+lint:
+	npx eslint
