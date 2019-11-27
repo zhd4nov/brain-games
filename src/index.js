@@ -7,7 +7,7 @@ const startGreet = () => {
 const requestUserName = () => readlineSync.question('\nWhat is your name, human? ');
 
 const greetUser = (userName) => {
-  console.log(`Hmm... Okay. Hello, ${userName}...\n`);
+  console.log(`Hmm... Okay. Hello, ${userName}.\n`);
 };
 
 export const startGame = () => {
