@@ -19,7 +19,6 @@ export const startGame = () => {
 };
 
 // brain-even sub-functions:
-
 const tellRules = () => console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
 const generateRandomQuestionNumber = (max = 150) => {
@@ -50,8 +49,8 @@ const startRound = (questionNumber) => {
 
   return checkAnswer(userAnswer);
 };
-// brain-even export:
 
+// brain-even export:
 export const startBrainEven = () => {
   startGreet();
   tellRules();
@@ -75,6 +74,6 @@ export const startBrainEven = () => {
     }
   }
 
-  console.log(`Congratulations ${userName}!`);
+  console.log(`Congratulations, ${userName}!`);
   return;
 };
