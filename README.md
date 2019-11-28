@@ -13,3 +13,9 @@
 > # brain-calc
 ```
 [![asciicast](https://asciinema.org/a/wOrYWB9YxlXIU0b272ZswzyMp.svg)](https://asciinema.org/a/wOrYWB9YxlXIU0b272ZswzyMp)
+
+
+```
+> # brain-gcd
+```
+[![asciicast](https://asciinema.org/a/JDAFw1HutPuHxQnJmJWA3LwCa.svg)](https://asciinema.org/a/JDAFw1HutPuHxQnJmJWA3LwCa)
