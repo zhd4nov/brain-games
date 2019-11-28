@@ -1,7 +1,10 @@
 import readlineSync from 'readline-sync';
+import { tellGcdRulles, generatePairOfRandomNumbers, calculateGreatestCommonDivisor } from './games/gcd';
+import { tellEvenRulles } from './games/even';
+import { tellCalcRulles } from './games/calc';
 
 // sub-functions:
-const generateRandomNumber = (max = 20) => {
+export const generateRandomNumber = (max = 20) => {
   const perhapsNumber = Math.floor(Math.random() * Math.floor(max));
   const readyNumber = perhapsNumber !== 0 ? perhapsNumber : generateRandomNumber();
 
@@ -13,7 +16,7 @@ const pickMathOperator = (operators = ['+', '-', '*']) => {
   const randomPickIndex = Math.floor(Math.random() * Math.floor(operatorsNumber));
 
   return operators[randomPickIndex];
-}
+};
 
 const generateExpression = () => {
   const firstOperand = generateRandomNumber();
@@ -32,6 +35,9 @@ const buildQuestion = (gameType) => {
       break;
     case 'calc':
       question = generateExpression();
+      break;
+    case 'gcd':
+      question = generatePairOfRandomNumbers();
       break;
     default:
       break;
@@ -54,6 +60,8 @@ const calculateCorrectAnswer = (gameType, question) => {
       return isEven(question) ? 'yes' : 'no';
     case 'calc':
       return eval(question);
+    case 'gcd':
+      return calculateGreatestCommonDivisor(question);
     }
 };
 
@@ -62,10 +70,8 @@ const checkUserAnswer = (gameType, question, userAnswer) => {
     case 'even':
       return calculateCorrectAnswer(gameType, question) === userAnswer;
     case 'calc':
-
+    case 'gcd':
       return calculateCorrectAnswer(gameType, question) === Number(userAnswer);
-    default:
-      console.error(`checkUserAnswer: call with invalid arguments!`);
   }
 };
 
@@ -77,10 +83,13 @@ export const sayWelcome = () => {
 export const tellRules = (gameType = 'empty') => {
   switch (gameType) {
     case 'even':
-      console.log('Answer "yes" if the number is even, otherwise answer "no".');
+      tellEvenRulles();
       break;
     case 'calc':
-      console.log('What is the result of the expression?');
+      tellCalcRulles();
+      break;
+    case 'gcd':
+      tellGcdRulles();
       break;
     default:
       break;
