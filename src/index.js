@@ -1,4 +1,4 @@
-import { sayWelcome, tellRules, requestUserName, greetUser, startGame } from './logic';
+import { sayWelcome, tellRules, requestUserName, greetUser, startGame } from './engine';
 
 // main flow export:
 export const start = (gameType) => {
