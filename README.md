@@ -18,4 +18,4 @@
 ```
 > # brain-gcd
 ```
-[![asciicast](https://asciinema.org/a/JDAFw1HutPuHxQnJmJWA3LwCa.svg)](https://asciinema.org/a/JDAFw1HutPuHxQnJmJWA3LwCa)
+[![asciicast](https://asciinema.org/a/EpOJ4lDolSsnixBiTepxezdG2.svg)](https://asciinema.org/a/EpOJ4lDolSsnixBiTepxezdG2)
