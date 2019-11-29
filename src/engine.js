@@ -1,31 +1,13 @@
 import readlineSync from 'readline-sync';
 import { tellGcdRulles, generatePairOfRandomNumbers, calculateGreatestCommonDivisor } from './games/gcd';
-import { tellEvenRulles } from './games/even';
-import { tellCalcRulles } from './games/calc';
+import { tellEvenRulles, generateRandomNumber } from './games/even';
+import { tellCalcRulles, generateExpression } from './games/calc';
 
-// sub-functions:
-export const generateRandomNumber = (max = 20) => {
-  const perhapsNumber = Math.floor(Math.random() * Math.floor(max));
-  const readyNumber = perhapsNumber !== 0 ? perhapsNumber : generateRandomNumber();
-
-  return readyNumber;
-};
-
-const pickMathOperator = (operators = ['+', '-', '*']) => {
-  const operatorsNumber = operators.length;
-  const randomPickIndex = Math.floor(Math.random() * Math.floor(operatorsNumber));
-
-  return operators[randomPickIndex];
-};
-
-const generateExpression = () => {
-  const firstOperand = generateRandomNumber();
-  const mathOperator = pickMathOperator();
-  const secondOperand = generateRandomNumber();
-
-  return `${firstOperand} ${mathOperator} ${secondOperand}`;
-};
-
+/**
+ * -------------------------
+ * Support functions / Tools
+ * -------------------------
+ */
 const buildQuestion = (gameType) => {
   let question;
 
@@ -50,9 +32,9 @@ const askQuestion = (question) => {
   console.log(`Question: ${question}`);
 };
 
-const isEven = (number) => Number(number) % 2 === 0;
-
 const getUserAnswer = () => readlineSync.question('Your answer: ');
+
+const isEven = (number) => Number(number) % 2 === 0;
 
 const calculateCorrectAnswer = (gameType, question) => {
   switch (gameType) {
@@ -75,7 +57,11 @@ const checkUserAnswer = (gameType, question, userAnswer) => {
   }
 };
 
-// export main flow functions:
+/**
+ * ----------------
+ * Export main flow
+ * ----------------
+ */
 export const sayWelcome = () => {
     console.log('Welcome to the Brain Games!');
 };
@@ -90,8 +76,6 @@ export const tellRules = (gameType = 'empty') => {
       break;
     case 'gcd':
       tellGcdRulles();
-      break;
-    default:
       break;
   }
   return;
