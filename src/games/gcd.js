@@ -1,4 +1,4 @@
-import { generateRandomNumber } from '../engine';
+import { generateRandomNumber } from './even';
 
 export const tellGcdRulles = () => console.log('Find the greatest common divisor of given numbers.');
 
