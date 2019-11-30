@@ -1,7 +1,8 @@
 import readlineSync from 'readline-sync';
-import { tellGcdRulles, generatePairOfRandomNumbers, calculateGreatestCommonDivisor } from './games/gcd';
-import { tellEvenRulles, generateRandomNumber } from './games/even';
+import { tellGcdRulles, generatePairOfRandomNumbers } from './games/gcd';
+import { tellEvenRulles, prepareQuestionNumber } from './games/even';
 import { tellCalcRulles, generateExpression } from './games/calc';
+import { tellProgressionRules, prepareQuestionProgressiveString } from './games/progression';
 
 /**
  * -------------------------
@@ -9,23 +10,23 @@ import { tellCalcRulles, generateExpression } from './games/calc';
  * -------------------------
  */
 const buildQuestion = (gameType) => {
-  let question;
+  let questionAnswerArray;
 
   switch (gameType) {
     case 'even':
-      question = generateRandomNumber();
+      questionAnswerArray = prepareQuestionNumber();
       break;
     case 'calc':
-      question = generateExpression();
+      questionAnswerArray = generateExpression();
       break;
     case 'gcd':
-      question = generatePairOfRandomNumbers();
+      questionAnswerArray = generatePairOfRandomNumbers();
       break;
-    default:
-      break;
+    case 'progression':
+      questionAnswerArray = prepareQuestionProgressiveString();
   }
 
-  return String(question);
+  return questionAnswerArray;
 };
 
 const askQuestion = (question) => {
@@ -34,27 +35,8 @@ const askQuestion = (question) => {
 
 const getUserAnswer = () => readlineSync.question('Your answer: ');
 
-const isEven = (number) => Number(number) % 2 === 0;
-
-const calculateCorrectAnswer = (gameType, question) => {
-  switch (gameType) {
-    case 'even':
-      return isEven(question) ? 'yes' : 'no';
-    case 'calc':
-      return eval(question);
-    case 'gcd':
-      return calculateGreatestCommonDivisor(question);
-    }
-};
-
-const checkUserAnswer = (gameType, question, userAnswer) => {
-  switch (gameType) {
-    case 'even':
-      return calculateCorrectAnswer(gameType, question) === userAnswer;
-    case 'calc':
-    case 'gcd':
-      return calculateCorrectAnswer(gameType, question) === Number(userAnswer);
-  }
+const checkUserAnswer = (question, userAnswer) => {
+  return question[1] === userAnswer;
 };
 
 /**
@@ -77,6 +59,9 @@ export const tellRules = (gameType = 'empty') => {
     case 'gcd':
       tellGcdRulles();
       break;
+    case 'progression':
+      tellProgressionRules();
+      break;
   }
   return;
 };
@@ -96,13 +81,12 @@ export const startGame = (gameType = 'empty', userName, roundLimit = 0) => {
     return;
   }
 
-  const question = buildQuestion(gameType);
-  askQuestion(question);
+  const questionAnswerArray = buildQuestion(gameType);
+  askQuestion(questionAnswerArray[0]);
   const userAnswer = getUserAnswer();
-  const correctAnswer = calculateCorrectAnswer(gameType, question);
-  const result = checkUserAnswer(gameType, question, userAnswer);
+  const result = checkUserAnswer(questionAnswerArray, userAnswer);
   if (!result) {
-    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${userName}!`);
+    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${questionAnswerArray[1]}".\nLet's try again, ${userName}!`);
     return;
   }
   console.log('Correct!');

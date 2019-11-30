@@ -3,21 +3,21 @@ import { generateRandomNumber } from './even';
 export const tellGcdRulles = () => console.log('Find the greatest common divisor of given numbers.');
 
 export const generatePairOfRandomNumbers = () => {
-  const firstNumber = generateRandomNumber(50);
-  const secondNumber = generateRandomNumber(150);
-
-  return `${firstNumber} ${secondNumber}`;
+  const middleQuestionPair = [generateRandomNumber(50), generateRandomNumber(150)];
+  const correctAnswer = calculateGreatestCommonDivisor(middleQuestionPair);
+  const correctAnswerString = String(correctAnswer);
+  const questionString = middleQuestionPair.join(' ');
+  return [questionString, correctAnswerString];
 };
 
-export const calculateGreatestCommonDivisor = (string) => {
-  const numbers = string.split(' ');
-  const [firstNumber, secondNumber] = numbers
+const calculateGreatestCommonDivisor = (numbers) => {
+  const [firstNumber, secondNumber] = numbers;
   return greatestCommonDivisor(firstNumber, secondNumber);
 };
 
 const greatestCommonDivisor = (first, second) => {
   if(!first) {
-    return Number(second);
+    return second;
   }
   return greatestCommonDivisor(second%first, first);
 };
