@@ -11,27 +11,27 @@ import { tellPrimeRulles, preparePrimeQuestionNumber } from './games/prime';
  * -------------------------
  */
 const buildQuestion = (gameType) => {
-  let questionAnswerArray;
+  let questionPack;
 
   switch (gameType) {
     case 'even':
-      questionAnswerArray = prepareQuestionNumber();
+      questionPack = prepareQuestionNumber();
       break;
     case 'calc':
-      questionAnswerArray = generateExpression();
+      questionPack = generateExpression();
       break;
     case 'gcd':
-      questionAnswerArray = generatePairOfRandomNumbers();
+      questionPack = generatePairOfRandomNumbers();
       break;
     case 'progression':
-      questionAnswerArray = prepareQuestionProgressiveString();
+      questionPack = prepareQuestionProgressiveString();
       break;
     case 'prime':
-      questionAnswerArray = preparePrimeQuestionNumber();
+      questionPack = preparePrimeQuestionNumber();
       break;
   }
 
-  return questionAnswerArray;
+  return questionPack;
 };
 
 const askQuestion = (question) => {
@@ -41,7 +41,7 @@ const askQuestion = (question) => {
 const getUserAnswer = () => readlineSync.question('Your answer: ');
 
 const checkUserAnswer = (question, userAnswer) => {
-  return question[1] === userAnswer;
+  return question === userAnswer;
 };
 
 /**
@@ -89,12 +89,12 @@ export const startGame = (gameType = 'empty', userName, roundLimit = 0) => {
     return;
   }
 
-  const questionAnswerArray = buildQuestion(gameType);
-  askQuestion(questionAnswerArray[0]);
+  const questionPack = buildQuestion(gameType);
+  askQuestion(questionPack.question);
   const userAnswer = getUserAnswer();
-  const result = checkUserAnswer(questionAnswerArray, userAnswer);
+  const result = checkUserAnswer(questionPack.answer, userAnswer);
   if (!result) {
-    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${questionAnswerArray[1]}".\nLet's try again, ${userName}!`);
+    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${questionPack.answer}".\nLet's try again, ${userName}!`);
     return;
   }
   console.log('Correct!');

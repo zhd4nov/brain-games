@@ -13,7 +13,12 @@ export const prepareQuestionProgressiveString = () => {
   const correctAnswerString = String(correctAnswer);
   const readyProgressionString = prograssionArrayWithHiddenElement.join(' ');
 
-  return [readyProgressionString, correctAnswerString];
+  const questionPack = {
+    question: readyProgressionString,
+    answer: correctAnswerString
+  };
+  
+  return questionPack;
 };
 
 const calculateNextNumber = (progression, mathOperator = '+', step = 1) => {

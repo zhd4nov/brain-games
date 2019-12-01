@@ -15,6 +15,10 @@ export const generateExpression = () => {
   const secondOperand = generateRandomNumber();
   const questionExpressionString = `${firstOperand} ${mathOperator} ${secondOperand}`
   const correctAnswerString = String(eval(questionExpressionString));
+  const questionPack = {
+    question: questionExpressionString,
+    answer: correctAnswerString
+  };
 
-  return [questionExpressionString, correctAnswerString];
+  return questionPack;
 };

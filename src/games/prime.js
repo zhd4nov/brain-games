@@ -5,11 +5,15 @@ export const tellPrimeRulles = () => {
 };
 
 export const preparePrimeQuestionNumber = () => {
-  const randomNumber = generateRandomNumber(400);
+  const randomNumber = generateRandomNumber();
   const correctAnswerString = isPrime(randomNumber) ? 'yes' : 'no';
   const randomNumberString = String(randomNumber);
+  const questionPack = {
+    question: randomNumberString,
+    answer: correctAnswerString
+  };
   
-  return [randomNumberString, correctAnswerString];
+  return questionPack;
 };
 
 const isPrime = (num) => {
