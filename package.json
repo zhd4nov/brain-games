@@ -1,7 +1,13 @@
 {
   "name": "frontend-project-lvl1",
   "version": "0.1.0",
-  "description": "",
+  "description": "My first project Mind Games it such math designer. The Mind Games has five game scenarios",
+  "keywords": [
+    "math",
+    "games",
+    "puzzle",
+    "training project"
+  ],
   "main": "index.js",
   "files": [
     "dist"
