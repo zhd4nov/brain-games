@@ -3,6 +3,7 @@ import { tellGcdRulles, generatePairOfRandomNumbers } from './games/gcd';
 import { tellEvenRulles, prepareQuestionNumber } from './games/even';
 import { tellCalcRulles, generateExpression } from './games/calc';
 import { tellProgressionRules, prepareQuestionProgressiveString } from './games/progression';
+import { tellPrimeRulles, preparePrimeQuestionNumber } from './games/prime';
 
 /**
  * -------------------------
@@ -24,6 +25,10 @@ const buildQuestion = (gameType) => {
       break;
     case 'progression':
       questionAnswerArray = prepareQuestionProgressiveString();
+      break;
+    case 'prime':
+      questionAnswerArray = preparePrimeQuestionNumber();
+      break;
   }
 
   return questionAnswerArray;
@@ -61,6 +66,9 @@ export const tellRules = (gameType = 'empty') => {
       break;
     case 'progression':
       tellProgressionRules();
+      break;
+    case 'prime':
+      tellPrimeRulles();
       break;
   }
   return;
