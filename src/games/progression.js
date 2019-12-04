@@ -1,4 +1,4 @@
-import { generateRandomNumber } from './even.js';
+import { generateRandomNumber } from '../utils';
 import { pickMathOperator } from './calc.js';
 
 export const tellProgressionRules = () => console.log(`What number is missing in the progression?`);
@@ -17,7 +17,7 @@ export const prepareQuestionProgressiveString = () => {
     question: readyProgressionString,
     answer: correctAnswerString
   };
-  
+
   return questionPack;
 };
 

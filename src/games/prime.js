@@ -1,4 +1,4 @@
-import { generateRandomNumber } from './even';
+import { generateRandomNumber } from '../utils';
 
 export const tellPrimeRulles = () => {
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
@@ -12,7 +12,7 @@ export const preparePrimeQuestionNumber = () => {
     question: randomNumberString,
     answer: correctAnswerString
   };
-  
+
   return questionPack;
 };
 

@@ -1,4 +1,4 @@
-import { generateRandomNumber } from './even';
+import { generateRandomNumber } from '../utils';
 
 export const tellGcdRulles = () => console.log('Find the greatest common divisor of given numbers.');
 
@@ -11,7 +11,7 @@ export const generatePairOfRandomNumbers = () => {
     question: questionString,
     answer: correctAnswerString
   };
-  
+
   return questionPack;
 };
 

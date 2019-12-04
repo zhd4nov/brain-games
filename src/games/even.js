@@ -1,11 +1,6 @@
+import { generateRandomNumber } from '../utils';
+
 export const tellEvenRulles = () => console.log('Answer "yes" if the number is even, otherwise answer "no".');
-
-export const generateRandomNumber = (maxNumber = 300) => {
-  const perhapsNumber = Math.floor(Math.random() * Math.floor(maxNumber));
-  const readyNumber = perhapsNumber !== 0 ? perhapsNumber : generateRandomNumber();
-
-  return readyNumber;
-};
 
 export const prepareQuestionNumber = () => {
   const randomNumber = generateRandomNumber()
@@ -15,6 +10,6 @@ export const prepareQuestionNumber = () => {
     question: questionNumberString,
     answer: correctAnswerString
   };
-  
+
   return questionPack;
 };

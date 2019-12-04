@@ -1,4 +1,4 @@
-import { generateRandomNumber } from './even.js';
+import { generateRandomNumber } from '../utils';
 
 export const tellCalcRulles = () => console.log('What is the result of the expression?');
 
