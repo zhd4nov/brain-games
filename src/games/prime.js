@@ -1,5 +1,5 @@
 import { generateRandomNumber } from '../utils';
-import { tellRules, requestUserName, startRound } from '..';
+import { startGame } from '..';
 
 const preparePrimeQuestionNumber = () => {
   const maxNumber = 50;
@@ -23,14 +23,6 @@ const isPrime = (num) => {
   return true;
 };
 
-export const startPrimeGame = () => {
-  const primeRulles = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  tellRules(primeRulles);
+const primeRulles = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-  const userName = requestUserName();
-  console.log(`Hello, ${userName}!\n`);
-
-  startRound(userName, preparePrimeQuestionNumber);
-
-  return;
-};
+export const startPrimeGame = () => startGame(primeRulles, preparePrimeQuestionNumber);

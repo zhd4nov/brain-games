@@ -1,5 +1,5 @@
 import { generateRandomNumber } from '../utils';
-import { tellRules, requestUserName, startRound } from '..';
+import { startGame } from '..';
 
 const greatestCommonDivisor = (first, second) => {
   if(!first) {
@@ -27,14 +27,6 @@ const generatePairOfRandomNumbers = () => {
   return questionPack;
 };
 
-export const startGcdGame = () => {
-  const gcdRulles = 'Find the greatest common divisor of given numbers.';
-  tellRules(gcdRulles);
+const gcdRulles = 'Find the greatest common divisor of given numbers.';
 
-  const userName = requestUserName();
-  console.log(`Hello, ${userName}!\n`);
-
-  startRound(userName, generatePairOfRandomNumbers);
-
-  return;
-};
+export const startGcdGame = () => startGame(gcdRulles, generatePairOfRandomNumbers);

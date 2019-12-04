@@ -1,5 +1,5 @@
 import { generateRandomNumber, pickMathOperator } from '../utils';
-import { tellRules, requestUserName, startRound } from '..';
+import { startGame } from '..';
 
 const getExpressionResult = (operator, firstOperand, secondOperand) => {
   switch (operator) {
@@ -28,14 +28,6 @@ const generateExpression = () => {
   return questionPack;
 };
 
-export const startCalcGame = () => {
-  const calcRulles = 'What is the result of the expression?';
-  tellRules(calcRulles);
+const calcRulles = 'What is the result of the expression?';
 
-  const userName = requestUserName();
-  console.log(`Hello, ${userName}!\n`);
-
-  startRound(userName, generateExpression);
-
-  return;
-};
+export const startCalcGame = () => startGame(calcRulles, generateExpression);

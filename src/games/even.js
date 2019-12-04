@@ -1,5 +1,5 @@
 import { generateRandomNumber } from '../utils';
-import { tellRules, requestUserName, startRound } from '..';
+import { startGame } from '..';
 
 const prepareQuestionNumber = () => {
   const maxNumber = 600;
@@ -14,14 +14,6 @@ const prepareQuestionNumber = () => {
   return questionPack;
 };
 
-export const startEvenGame = () => {
-  const evenRulles = 'Answer "yes" if the number is even, otherwise answer "no".';
-  tellRules(evenRulles);
+const evenRulles = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-  const userName = requestUserName();
-  console.log(`Hello, ${userName}!\n`);
-
-  startRound(userName, prepareQuestionNumber);
-
-  return;
-};
+export const startEvenGame = () => startGame(evenRulles, prepareQuestionNumber);
