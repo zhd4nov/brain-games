@@ -1,9 +1,7 @@
-import { generateRandomNumber } from '../utils';
-import { pickMathOperator } from './calc.js';
+import { generateRandomNumber, pickMathOperator } from '../utils';
+import { tellRules, requestUserName, startRound } from '..';
 
-export const tellProgressionRules = () => console.log(`What number is missing in the progression?`);
-
-export const prepareQuestionProgressiveString = () => {
+const prepareQuestionProgressiveString = () => {
   const progressionArray = generateProgression();
   const randomHiddenElementIndex = generateRandomNumber(progressionArray.length);
 
@@ -31,9 +29,12 @@ const calculateNextNumber = (progression, mathOperator = '+', step = 1) => {
 };
 
 const generateProgression = (maxLength = 10) => {
-  const startNumber = generateRandomNumber();
-  const mathOperator = pickMathOperator(['+', '-']);
-  const progressionStep = generateRandomNumber();
+  const maxNumber = 150
+  const startNumber = generateRandomNumber(maxNumber);
+  const operators = ['+', '-'];
+  const mathOperator = pickMathOperator(operators);
+  const maxStep = 15;
+  const progressionStep = generateRandomNumber(maxStep);
 
   const bunchUpNumbers = (progression = []) => {
     if (progression.length === maxLength) {
@@ -44,4 +45,16 @@ const generateProgression = (maxLength = 10) => {
   };
 
   return bunchUpNumbers([startNumber]);
+};
+
+export const startProgressionGame = () => {
+  const progressionRulles = 'What number is missing in the progression?';
+  tellRules(progressionRulles);
+
+  const userName = requestUserName();
+  console.log(`Hello, ${userName}!\n`);
+
+  startRound(userName, prepareQuestionProgressiveString);
+
+  return;
 };

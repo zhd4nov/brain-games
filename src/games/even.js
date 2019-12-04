@@ -2,7 +2,8 @@ import { generateRandomNumber } from '../utils';
 import { tellRules, requestUserName, startRound } from '..';
 
 const prepareQuestionNumber = () => {
-  const randomNumber = generateRandomNumber()
+  const maxNumber = 600;
+  const randomNumber = generateRandomNumber(maxNumber);
   const correctAnswerString = randomNumber % 2 === 0 ? 'yes' : 'no';
   const questionNumberString = String(randomNumber);
   const questionPack = {
@@ -20,7 +21,7 @@ export const startEvenGame = () => {
   const userName = requestUserName();
   console.log(`Hello, ${userName}!\n`);
 
-  startRound(userName, prepareQuestionNumber)
+  startRound(userName, prepareQuestionNumber);
 
   return;
 };

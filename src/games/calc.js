@@ -1,24 +1,41 @@
-import { generateRandomNumber } from '../utils';
+import { generateRandomNumber, pickMathOperator } from '../utils';
+import { tellRules, requestUserName, startRound } from '..';
 
-export const tellCalcRulles = () => console.log('What is the result of the expression?');
-
-export const pickMathOperator = (operators = ['+', '-', '*']) => {
-  const operatorsNumber = operators.length;
-  const randomPickIndex = Math.floor(Math.random() * Math.floor(operatorsNumber));
-
-  return operators[randomPickIndex];
+const getExpressionResult = (operator, firstOperand, secondOperand) => {
+  switch (operator) {
+    case '+':
+      return firstOperand + secondOperand;
+    case '-':
+      return firstOperand - secondOperand;
+    case '*':
+      return firstOperand * secondOperand;
+  }
 };
 
-export const generateExpression = () => {
-  const firstOperand = generateRandomNumber();
-  const mathOperator = pickMathOperator();
-  const secondOperand = generateRandomNumber();
+const generateExpression = () => {
+  const maxNumber = 30;
+  const operators = ['+', '-', '*'];
+  const firstOperand = generateRandomNumber(maxNumber);
+  const mathOperator = pickMathOperator(operators);
+  const secondOperand = generateRandomNumber(maxNumber);
   const questionExpressionString = `${firstOperand} ${mathOperator} ${secondOperand}`
-  const correctAnswerString = String(eval(questionExpressionString));
+  const correctAnswerString = String(getExpressionResult(mathOperator, firstOperand, secondOperand));
   const questionPack = {
     question: questionExpressionString,
     answer: correctAnswerString
   };
 
   return questionPack;
+};
+
+export const startCalcGame = () => {
+  const calcRulles = 'What is the result of the expression?';
+  tellRules(calcRulles);
+
+  const userName = requestUserName();
+  console.log(`Hello, ${userName}!\n`);
+
+  startRound(userName, generateExpression);
+
+  return;
 };

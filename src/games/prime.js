@@ -1,11 +1,9 @@
 import { generateRandomNumber } from '../utils';
+import { tellRules, requestUserName, startRound } from '..';
 
-export const tellPrimeRulles = () => {
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-};
-
-export const preparePrimeQuestionNumber = () => {
-  const randomNumber = generateRandomNumber();
+const preparePrimeQuestionNumber = () => {
+  const maxNumber = 50;
+  const randomNumber = generateRandomNumber(maxNumber);
   const correctAnswerString = isPrime(randomNumber) ? 'yes' : 'no';
   const randomNumberString = String(randomNumber);
   const questionPack = {
@@ -23,4 +21,16 @@ const isPrime = (num) => {
     }
   }
   return true;
+};
+
+export const startPrimeGame = () => {
+  const primeRulles = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  tellRules(primeRulles);
+
+  const userName = requestUserName();
+  console.log(`Hello, ${userName}!\n`);
+
+  startRound(userName, preparePrimeQuestionNumber);
+
+  return;
 };
