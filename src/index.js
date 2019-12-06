@@ -1,4 +1,3 @@
-
 import readlineSync from 'readline-sync';
 
 const tellRules = (rulles) => console.log(rulles);
@@ -7,8 +6,7 @@ const checkUserAnswer = (correctAnswer, userAnswer) => correctAnswer === userAns
 
 const startRound = (userName, questionGenerator, roundLimitCounter = 0) => {
   if (roundLimitCounter === 3) {
-    console.log(`Congratulations, ${userName}!`);
-    return;
+    return console.log(`Congratulations, ${userName}!`);
   }
 
   const questionPack = questionGenerator();
@@ -17,15 +15,14 @@ const startRound = (userName, questionGenerator, roundLimitCounter = 0) => {
 
   const result = checkUserAnswer(questionPack.answer, userAnswer);
   if (!result) {
-    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${questionPack.answer}".\nLet's try again, ${userName}!`);
-    return;
+    return console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${questionPack.answer}".\nLet's try again, ${userName}!`);
   }
   console.log('Correct!');
 
   return startRound(userName, questionGenerator, roundLimitCounter + 1);
 };
 
-export const startGame = (rulles, questionGenerator) => {
+const startGame = (rulles, questionGenerator) => {
   console.log('Welcome to the Brain Games!');
   tellRules(rulles);
 
@@ -33,6 +30,6 @@ export const startGame = (rulles, questionGenerator) => {
   console.log(`Hello, ${userName}!\n`);
 
   startRound(userName, questionGenerator);
-
-  return;
 };
+
+export default startGame;

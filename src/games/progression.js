@@ -1,23 +1,5 @@
 import { generateRandomNumber, pickMathOperator } from '../utils';
-import { startGame } from '..';
-
-const prepareQuestionProgressive = () => {
-  const progressionArray = generateProgression();
-  const randomHiddenElementIndex = generateRandomNumber(progressionArray.length);
-
-  const prograssionArrayWithHiddenElement = progressionArray.slice();
-  const correctAnswer = prograssionArrayWithHiddenElement.splice(randomHiddenElementIndex, 1, '..');
-
-  const correctAnswerString = String(correctAnswer);
-  const readyProgressionString = prograssionArrayWithHiddenElement.join(' ');
-
-  const questionPack = {
-    question: readyProgressionString,
-    answer: correctAnswerString
-  };
-
-  return questionPack;
-};
+import startGame from '..';
 
 const calculateNextNumber = (progression, mathOperator = '+', step = 1) => {
   switch (mathOperator) {
@@ -25,7 +7,9 @@ const calculateNextNumber = (progression, mathOperator = '+', step = 1) => {
       return progression[progression.length - 1] - step;
     case '+':
       return progression[progression.length - 1] + step;
+    default:
   }
+  return console.log('Error: calculateNextNumber()');
 };
 
 const generateProgression = (maxLength = 10) => {
@@ -47,6 +31,24 @@ const generateProgression = (maxLength = 10) => {
   return bunchUpNumbers([startNumber]);
 };
 
+const prepareQuestionProgressive = () => {
+  const progressionArray = generateProgression();
+  const randomHiddenElementIndex = generateRandomNumber(progressionArray.length);
+
+  const prograssionArrayWithHiddenElement = progressionArray.slice();
+  const correctAnswer = prograssionArrayWithHiddenElement.splice(randomHiddenElementIndex, 1, '..');
+
+  const correctAnswerString = String(correctAnswer);
+  const readyProgressionString = prograssionArrayWithHiddenElement.join(' ');
+
+  const questionPack = {
+    question: readyProgressionString,
+    answer: correctAnswerString,
+  };
+
+  return questionPack;
+};
+
 const progressionRulles = 'What number is missing in the progression?';
 
-export const startProgressionGame = () => startGame(progressionRulles, prepareQuestionProgressive);
+export default () => startGame(progressionRulles, prepareQuestionProgressive);

@@ -1,5 +1,5 @@
 import { generateRandomNumber } from '../utils';
-import { startGame } from '..';
+import startGame from '..';
 
 const prepareQuestionNumber = () => {
   const maxNumber = 600;
@@ -8,7 +8,7 @@ const prepareQuestionNumber = () => {
   const questionNumberString = String(randomNumber);
   const questionPack = {
     question: questionNumberString,
-    answer: correctAnswerString
+    answer: correctAnswerString,
   };
 
   return questionPack;
@@ -16,4 +16,4 @@ const prepareQuestionNumber = () => {
 
 const evenRulles = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-export const startEvenGame = () => startGame(evenRulles, prepareQuestionNumber);
+export default () => startGame(evenRulles, prepareQuestionNumber);

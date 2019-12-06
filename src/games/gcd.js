@@ -1,11 +1,11 @@
 import { generateRandomNumber } from '../utils';
-import { startGame } from '..';
+import startGame from '..';
 
 const greatestCommonDivisor = (first, second) => {
-  if(!first) {
+  if (!first) {
     return second;
   }
-  return greatestCommonDivisor(second%first, first);
+  return greatestCommonDivisor(second % first, first);
 };
 
 const calculateGreatestCommonDivisor = (numbers) => {
@@ -21,7 +21,7 @@ const generatePairOfRandomNumbers = () => {
   const questionString = middleQuestionPair.join(' ');
   const questionPack = {
     question: questionString,
-    answer: correctAnswerString
+    answer: correctAnswerString,
   };
 
   return questionPack;
@@ -29,4 +29,4 @@ const generatePairOfRandomNumbers = () => {
 
 const gcdRulles = 'Find the greatest common divisor of given numbers.';
 
-export const startGcdGame = () => startGame(gcdRulles, generatePairOfRandomNumbers);
+export default () => startGame(gcdRulles, generatePairOfRandomNumbers);

@@ -1,5 +1,5 @@
 import { generateRandomNumber, pickMathOperator } from '../utils';
-import { startGame } from '..';
+import startGame from '..';
 
 const getExpressionResult = (operator, firstOperand, secondOperand) => {
   switch (operator) {
@@ -9,7 +9,9 @@ const getExpressionResult = (operator, firstOperand, secondOperand) => {
       return firstOperand - secondOperand;
     case '*':
       return firstOperand * secondOperand;
+    default:
   }
+  return 'Error: getExpressionResult()';
 };
 
 const generateExpression = () => {
@@ -18,11 +20,13 @@ const generateExpression = () => {
   const firstOperand = generateRandomNumber(maxNumber);
   const mathOperator = pickMathOperator(operators);
   const secondOperand = generateRandomNumber(maxNumber);
-  const questionExpressionString = `${firstOperand} ${mathOperator} ${secondOperand}`
-  const correctAnswerString = String(getExpressionResult(mathOperator, firstOperand, secondOperand));
+  const questionExpressionString = `${firstOperand} ${mathOperator} ${secondOperand}`;
+  const correctAnswerString = String(
+    getExpressionResult(mathOperator, firstOperand, secondOperand),
+  );
   const questionPack = {
     question: questionExpressionString,
-    answer: correctAnswerString
+    answer: correctAnswerString,
   };
 
   return questionPack;
@@ -30,4 +34,4 @@ const generateExpression = () => {
 
 const calcRulles = 'What is the result of the expression?';
 
-export const startCalcGame = () => startGame(calcRulles, generateExpression);
+export default () => startGame(calcRulles, generateExpression);
