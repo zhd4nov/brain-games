@@ -1,13 +1,17 @@
+---
+
+plugins:
+  - babel
+
 env:
   es6: true
   node: true
-extends: 'eslint:recommended'
-globals:
-  Atomics: readonly
-  SharedArrayBuffer: readonly
-parserOptions:
-  ecmaVersion: 2018
-  sourceType: module
-rules: {
-  "no-console": "off",
-  }
+
+parser: babel-eslint
+
+extends:
+  - 'airbnb-base'
+  - 'eslint:recommended'
+
+rules:
+  no-console: 0
