@@ -14,24 +14,24 @@ const getExpressionResult = (operator, firstOperand, secondOperand) => {
   return 'Error: getExpressionResult()';
 };
 
+const operators = ['+', '-', '*'];
+
 const generateExpression = () => {
-  const maxNumber = 30;
-  const operators = ['+', '-', '*'];
-  const firstOperand = generateRandomNumber(maxNumber);
+  const firstOperand = generateRandomNumber(30, 60);
   const mathOperator = pickMathOperator(operators);
-  const secondOperand = generateRandomNumber(maxNumber);
-  const questionExpressionString = `${firstOperand} ${mathOperator} ${secondOperand}`;
-  const correctAnswerString = String(
+  const secondOperand = generateRandomNumber(10, 60);
+  const questionExpression = `${firstOperand} ${mathOperator} ${secondOperand}`;
+  const correctAnswer = String(
     getExpressionResult(mathOperator, firstOperand, secondOperand),
   );
   const questionPack = {
-    question: questionExpressionString,
-    answer: correctAnswerString,
+    question: questionExpression,
+    answer: correctAnswer,
   };
 
   return questionPack;
 };
 
-const calcRulles = 'What is the result of the expression?';
+const description = 'What is the result of the expression?';
 
-export default () => startGame(calcRulles, generateExpression);
+export default () => startGame(description, generateExpression);
