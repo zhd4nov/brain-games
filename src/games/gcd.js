@@ -8,25 +8,19 @@ const greatestCommonDivisor = (first, second) => {
   return greatestCommonDivisor(second % first, first);
 };
 
-const calculateGreatestCommonDivisor = (numbers) => {
-  const [firstNumber, secondNumber] = numbers;
-  return greatestCommonDivisor(firstNumber, secondNumber);
-};
-
 const generatePairOfRandomNumbers = () => {
-  const maxNumber = 300;
-  const middleQuestionPair = [generateRandomNumber(maxNumber), generateRandomNumber(maxNumber)];
-  const correctAnswer = calculateGreatestCommonDivisor(middleQuestionPair);
-  const correctAnswerString = String(correctAnswer);
-  const questionString = middleQuestionPair.join(' ');
+  const firstNumber = generateRandomNumber(10, 300);
+  const secondNumber = generateRandomNumber(300, 500);
+  const correctAnswer = String(greatestCommonDivisor(firstNumber, secondNumber));
+  const questionPair = `${firstNumber} ${secondNumber}`;
   const questionPack = {
-    question: questionString,
-    answer: correctAnswerString,
+    question: questionPair,
+    answer: correctAnswer,
   };
 
   return questionPack;
 };
 
-const gcdRulles = 'Find the greatest common divisor of given numbers.';
+const description = 'Find the greatest common divisor of given numbers.';
 
-export default () => startGame(gcdRulles, generatePairOfRandomNumbers);
+export default () => startGame(description, generatePairOfRandomNumbers);
