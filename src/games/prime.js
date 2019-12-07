@@ -2,27 +2,30 @@ import { generateRandomNumber } from '../utils';
 import startGame from '..';
 
 const isPrime = (num) => {
-  for (let i = 2; i < num; i += 1) {
+  if (num < 2) {
+    return false;
+  }
+
+  for (let i = 2; i < num / 2; i += 1) {
     if (num % i === 0) {
       return false;
     }
   }
+
   return true;
 };
 
 const preparePrimeQuestionNumber = () => {
-  const maxNumber = 50;
-  const randomNumber = generateRandomNumber(maxNumber);
-  const correctAnswerString = isPrime(randomNumber) ? 'yes' : 'no';
-  const randomNumberString = String(randomNumber);
+  const questionNumber = generateRandomNumber(15, 250);
+  const correctAnswer = isPrime(questionNumber) ? 'yes' : 'no';
   const questionPack = {
-    question: randomNumberString,
-    answer: correctAnswerString,
+    question: questionNumber,
+    answer: correctAnswer,
   };
 
   return questionPack;
 };
 
-const primeRulles = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-export default () => startGame(primeRulles, preparePrimeQuestionNumber);
+export default () => startGame(description, preparePrimeQuestionNumber);
