@@ -1,19 +1,20 @@
 import { generateRandomNumber } from '../utils';
 import startGame from '..';
 
+const isEven = (number) => number % 2 === 0;
+
 const prepareQuestionNumber = () => {
-  const maxNumber = 600;
-  const randomNumber = generateRandomNumber(maxNumber);
-  const correctAnswerString = randomNumber % 2 === 0 ? 'yes' : 'no';
-  const questionNumberString = String(randomNumber);
+  const questionNumber = generateRandomNumber(1, 350);
+  const correctAnswer = isEven(questionNumber) ? 'yes' : 'no';
+
   const questionPack = {
-    question: questionNumberString,
-    answer: correctAnswerString,
+    question: questionNumber,
+    answer: correctAnswer,
   };
 
   return questionPack;
 };
 
-const evenRulles = 'Answer "yes" if the number is even, otherwise answer "no".';
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-export default () => startGame(evenRulles, prepareQuestionNumber);
+export default () => startGame(description, prepareQuestionNumber);

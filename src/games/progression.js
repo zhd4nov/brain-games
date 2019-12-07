@@ -12,16 +12,14 @@ const calculateNextNumber = (progression, mathOperator = '+', step = 1) => {
   return console.log('Error: calculateNextNumber()');
 };
 
-const generateProgression = (maxLength = 10) => {
-  const maxNumber = 150;
-  const startNumber = generateRandomNumber(maxNumber);
+const generateProgression = (length = 10) => {
+  const startNumber = generateRandomNumber(1, 50);
   const operators = ['+', '-'];
   const mathOperator = pickMathOperator(operators);
-  const maxStep = 15;
-  const progressionStep = generateRandomNumber(maxStep);
+  const progressionStep = generateRandomNumber(1, 15);
 
   const bunchUpNumbers = (progression = []) => {
-    if (progression.length === maxLength) {
+    if (progression.length === length) {
       return progression;
     }
     const nextNumber = calculateNextNumber(progression, mathOperator, progressionStep);
@@ -32,18 +30,18 @@ const generateProgression = (maxLength = 10) => {
 };
 
 const prepareQuestionProgressive = () => {
-  const progressionArray = generateProgression();
-  const randomHiddenElementIndex = generateRandomNumber(progressionArray.length);
+  const progressionArray = generateProgression(10);
+  const randomHiddenElementIndex = generateRandomNumber(0, progressionArray.length);
 
-  const prograssionArrayWithHiddenElement = progressionArray.slice();
-  const correctAnswer = prograssionArrayWithHiddenElement.splice(randomHiddenElementIndex, 1, '..');
+  const prograssionWithHiddenElement = progressionArray.slice();
+  const hiddenElement = prograssionWithHiddenElement.splice(randomHiddenElementIndex, 1, '..');
 
-  const correctAnswerString = String(correctAnswer);
-  const readyProgressionString = prograssionArrayWithHiddenElement.join(' ');
+  const correctAnswer = String(hiddenElement);
+  const readyProgression = prograssionWithHiddenElement.join(' ');
 
   const questionPack = {
-    question: readyProgressionString,
-    answer: correctAnswerString,
+    question: readyProgression,
+    answer: correctAnswer,
   };
 
   return questionPack;
