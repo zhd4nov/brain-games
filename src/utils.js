@@ -1,8 +1,6 @@
-export const generateRandomNumber = (maxNumber) => {
-  const perhapsNumber = Math.floor(Math.random() * Math.floor(maxNumber));
-  const readyNumber = perhapsNumber !== 0 ? perhapsNumber : generateRandomNumber();
-
-  return readyNumber;
+export const generateRandomNumber = (min, max) => {
+  const randomNumber = Math.floor(min + Math.random() * Math.floor(max + 1));
+  return randomNumber;
 };
 
 export const pickMathOperator = (operators) => {
