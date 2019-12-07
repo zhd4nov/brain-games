@@ -9,3 +9,14 @@ export const pickMathOperator = (operators) => {
 
   return operators[randomPickIndex];
 };
+
+export const prepareQuestionSingleNumber = (checker) => {
+  const questionNumber = generateRandomNumber(1, 250);
+  const correctAnswer = checker(questionNumber) ? 'yes' : 'no';
+  const questionPack = {
+    question: questionNumber,
+    answer: correctAnswer,
+  };
+
+  return questionPack;
+};
