@@ -1,4 +1,4 @@
-import { prepareQuestionSingleNumber } from '../utils';
+import { generateRandomNumber } from '../utils';
 import startGame from '..';
 
 const isPrime = (num) => {
@@ -15,8 +15,17 @@ const isPrime = (num) => {
   return true;
 };
 
-const preparePrimeQuestionNumber = () => prepareQuestionSingleNumber(isPrime);
+const prepareQuestionNumber = () => {
+  const questionNumber = generateRandomNumber(1, 250);
+  const correctAnswer = isPrime(questionNumber) ? 'yes' : 'no';
+  const questionPack = {
+    question: questionNumber,
+    answer: correctAnswer,
+  };
+
+  return questionPack;
+};
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-export default () => startGame(description, preparePrimeQuestionNumber);
+export default () => startGame(description, prepareQuestionNumber);
