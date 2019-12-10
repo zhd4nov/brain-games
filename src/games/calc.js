@@ -1,4 +1,4 @@
-import { generateRandomNumber, pickMathOperator } from '../utils';
+import generateRandom from '../utils';
 import startGame from '..';
 
 const getExpressionResult = (operator, firstOperand, secondOperand) => {
@@ -11,15 +11,22 @@ const getExpressionResult = (operator, firstOperand, secondOperand) => {
       return firstOperand * secondOperand;
     default:
   }
-  return 'Error: getExpressionResult()';
+  return null;
+};
+
+const pickMathOperator = (operators) => {
+  const operatorsNumber = operators.length;
+  const randomPickIndex = Math.floor(Math.random() * Math.floor(operatorsNumber));
+
+  return operators[randomPickIndex];
 };
 
 const operators = ['+', '-', '*'];
 
 const generateExpression = () => {
-  const firstOperand = generateRandomNumber(30, 60);
+  const firstOperand = generateRandom(30, 60);
   const mathOperator = pickMathOperator(operators);
-  const secondOperand = generateRandomNumber(10, 60);
+  const secondOperand = generateRandom(10, 60);
   const questionExpression = `${firstOperand} ${mathOperator} ${secondOperand}`;
   const correctAnswer = String(
     getExpressionResult(mathOperator, firstOperand, secondOperand),

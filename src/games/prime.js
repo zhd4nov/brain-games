@@ -1,4 +1,4 @@
-import { generateRandomNumber } from '../utils';
+import generateRandom from '../utils';
 import startGame from '..';
 
 const isPrime = (num) => {
@@ -16,7 +16,7 @@ const isPrime = (num) => {
 };
 
 const prepareQuestionNumber = () => {
-  const questionNumber = generateRandomNumber(1, 250);
+  const questionNumber = generateRandom(1, 250);
   const correctAnswer = isPrime(questionNumber) ? 'yes' : 'no';
   const questionPack = {
     question: questionNumber,

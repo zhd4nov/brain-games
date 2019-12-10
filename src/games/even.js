@@ -1,10 +1,10 @@
-import { generateRandomNumber } from '../utils';
+import generateRandom from '../utils';
 import startGame from '..';
 
 const isEven = (number) => number % 2 === 0;
 
 const prepareQuestionNumber = () => {
-  const questionNumber = generateRandomNumber(1, 250);
+  const questionNumber = generateRandom(1, 250);
   const correctAnswer = isEven(questionNumber) ? 'yes' : 'no';
   const questionPack = {
     question: questionNumber,

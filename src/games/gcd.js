@@ -1,4 +1,4 @@
-import { generateRandomNumber } from '../utils';
+import generateRandom from '../utils';
 import startGame from '..';
 
 const greatestCommonDivisor = (first, second) => {
@@ -9,8 +9,8 @@ const greatestCommonDivisor = (first, second) => {
 };
 
 const generatePairOfRandomNumbers = () => {
-  const firstNumber = generateRandomNumber(10, 300);
-  const secondNumber = generateRandomNumber(300, 500);
+  const firstNumber = generateRandom(10, 300);
+  const secondNumber = generateRandom(300, 500);
   const correctAnswer = String(greatestCommonDivisor(firstNumber, secondNumber));
   const questionPair = `${firstNumber} ${secondNumber}`;
   const questionPack = {
