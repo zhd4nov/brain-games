@@ -1,7 +1,7 @@
 import generateRandom from '../utils';
 import startGame from '..';
 
-const generateProgression = (length = 10) => {
+const generateProgression = (length) => {
   const startNumber = generateRandom(1, 50);
   const progressionStep = generateRandom(-10, 20);
 
