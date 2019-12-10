@@ -23,7 +23,7 @@ const pickMathOperator = (operators) => {
 
 const operators = ['+', '-', '*'];
 
-const generateExpression = () => {
+const generateGameData = () => {
   const firstOperand = generateRandom(30, 60);
   const mathOperator = pickMathOperator(operators);
   const secondOperand = generateRandom(10, 60);
@@ -41,4 +41,4 @@ const generateExpression = () => {
 
 const description = 'What is the result of the expression?';
 
-export default () => startGame(description, generateExpression);
+export default () => startGame(description, generateGameData);

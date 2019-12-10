@@ -17,7 +17,7 @@ const generateProgression = (length = 10) => {
   return bunchUpNumbers([startNumber]);
 };
 
-const prepareQuestionProgressive = () => {
+const generateGameData = () => {
   const progressionArray = generateProgression(10);
   const randomHiddenElementIndex = generateRandom(0, progressionArray.length);
 
@@ -37,4 +37,4 @@ const prepareQuestionProgressive = () => {
 
 const progressionRulles = 'What number is missing in the progression?';
 
-export default () => startGame(progressionRulles, prepareQuestionProgressive);
+export default () => startGame(progressionRulles, generateGameData);

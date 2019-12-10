@@ -8,7 +8,7 @@ const greatestCommonDivisor = (first, second) => {
   return greatestCommonDivisor(second % first, first);
 };
 
-const generatePairOfRandomNumbers = () => {
+const generateGameData = () => {
   const firstNumber = generateRandom(10, 300);
   const secondNumber = generateRandom(300, 500);
   const correctAnswer = String(greatestCommonDivisor(firstNumber, secondNumber));
@@ -23,4 +23,4 @@ const generatePairOfRandomNumbers = () => {
 
 const description = 'Find the greatest common divisor of given numbers.';
 
-export default () => startGame(description, generatePairOfRandomNumbers);
+export default () => startGame(description, generateGameData);
