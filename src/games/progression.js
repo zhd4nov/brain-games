@@ -1,28 +1,16 @@
-import { generateRandomNumber, pickMathOperator } from '../utils';
+import generateRandom from '../utils';
 import startGame from '..';
 
-const calculateNextNumber = (progression, mathOperator = '+', step = 1) => {
-  switch (mathOperator) {
-    case '-':
-      return progression[progression.length - 1] - step;
-    case '+':
-      return progression[progression.length - 1] + step;
-    default:
-  }
-  return console.log('Error: calculateNextNumber()');
-};
-
 const generateProgression = (length = 10) => {
-  const startNumber = generateRandomNumber(1, 50);
-  const operators = ['+', '-'];
-  const mathOperator = pickMathOperator(operators);
-  const progressionStep = generateRandomNumber(1, 15);
+  const startNumber = generateRandom(1, 50);
+  const progressionStep = generateRandom(-10, 20);
 
   const bunchUpNumbers = (progression = []) => {
     if (progression.length === length) {
       return progression;
     }
-    const nextNumber = calculateNextNumber(progression, mathOperator, progressionStep);
+
+    const nextNumber = progression[progression.length - 1] + progressionStep;
     return bunchUpNumbers([...progression, nextNumber]);
   };
 
@@ -31,7 +19,7 @@ const generateProgression = (length = 10) => {
 
 const prepareQuestionProgressive = () => {
   const progressionArray = generateProgression(10);
-  const randomHiddenElementIndex = generateRandomNumber(0, progressionArray.length);
+  const randomHiddenElementIndex = generateRandom(0, progressionArray.length);
 
   const prograssionWithHiddenElement = progressionArray.slice();
   const hiddenElement = prograssionWithHiddenElement.splice(randomHiddenElementIndex, 1, '..');
