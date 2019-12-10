@@ -1,19 +1,21 @@
 import readlineSync from 'readline-sync';
 
-const checkUserAnswer = (correctAnswer, userAnswer) => correctAnswer === userAnswer;
+const roundLimit = 3;
 
 const startRound = (userName, questionGenerator, roundLimitCounter = 0) => {
-  if (roundLimitCounter === 3) {
-    return console.log(`Congratulations, ${userName}!`);
+  if (roundLimitCounter === roundLimit) {
+    console.log(`Congratulations, ${userName}!`);
+    return null;
   }
 
   const questionPack = questionGenerator();
   console.log(`Question: ${questionPack.question}`);
   const userAnswer = readlineSync.question('Your answer: ');
 
-  const result = checkUserAnswer(questionPack.answer, userAnswer);
+  const result = questionPack.answer === userAnswer;
   if (!result) {
-    return console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${questionPack.answer}".\nLet's try again, ${userName}!`);
+    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${questionPack.answer}".\nLet's try again, ${userName}!`);
+    return null;
   }
   console.log('Correct!');
 
@@ -27,7 +29,7 @@ const startGame = (rulles, questionGenerator) => {
   const userName = readlineSync.question('\nMay I have your name? ');
   console.log(`Hello, ${userName}!\n`);
 
-  startRound(userName, questionGenerator);
+  return startRound(userName, questionGenerator);
 };
 
 export default startGame;
