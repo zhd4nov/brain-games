@@ -29,7 +29,9 @@ const startGame = (rulles, questionGenerator) => {
   const userName = readlineSync.question('\nMay I have your name? ');
   console.log(`Hello, ${userName}!\n`);
 
-  return startRound(userName, questionGenerator);
+  startRound(userName, questionGenerator);
+
+  return null;
 };
 
 export default startGame;
