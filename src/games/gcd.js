@@ -9,10 +9,10 @@ const greatestCommonDivisor = (first, second) => {
 };
 
 const generateGameData = () => {
-  const firstNumber = generateRandom(10, 300);
-  const secondNumber = generateRandom(300, 500);
-  const correctAnswer = String(greatestCommonDivisor(firstNumber, secondNumber));
-  const questionPair = `${firstNumber} ${secondNumber}`;
+  const first = generateRandom(10, 300);
+  const second = generateRandom(300, 500);
+  const correctAnswer = String(greatestCommonDivisor(first, second));
+  const questionPair = `${first} ${second}`;
   const questionPack = {
     question: questionPair,
     answer: correctAnswer,
