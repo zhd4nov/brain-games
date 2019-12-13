@@ -16,7 +16,7 @@ const getExpressionResult = (operator, firstOperand, secondOperand) => {
 
 const pickMathOperator = (operators) => {
   const operatorsNumber = operators.length;
-  const randomPickIndex = Math.floor(Math.random() * Math.floor(operatorsNumber));
+  const randomPickIndex = generateRandom(0, operatorsNumber);
 
   return operators[randomPickIndex];
 };
