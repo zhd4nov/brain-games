@@ -20,9 +20,10 @@ const generateProgression = (length, start, step) => {
 const generateGameData = () => {
   const startNumber = generateRandom(1, 50);
   const progressionStep = generateRandom(-10, 20);
+  const progressionLength = 10;
 
   const progressionArray = generateProgression(
-    10,
+    progressionLength,
     startNumber,
     progressionStep,
   );
