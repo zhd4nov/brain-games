@@ -5,7 +5,7 @@ const roundsCount = 3;
 const startRound = (userName, questionGenerator, roundsCounter = 0) => {
   if (roundsCounter === roundsCount) {
     console.log(`Congratulations, ${userName}!`);
-    return null;
+    return true;
   }
 
   const questionPack = questionGenerator();
@@ -30,9 +30,9 @@ const startGame = (rulles, questionGenerator) => {
   const userName = readlineSync.question('\nMay I have your name? ');
   console.log(`Hello, ${userName}!\n`);
 
-  startRound(userName, questionGenerator);
+  const gameResult = startRound(userName, questionGenerator);
 
-  return true;
+  return gameResult;
 };
 
 export default startGame;
