@@ -21,11 +21,19 @@ const generateGameData = () => {
   const startNumber = generateRandom(1, 50);
   const progressionStep = generateRandom(-10, 20);
 
-  const progressionArray = generateProgression(10, startNumber, progressionStep);
+  const progressionArray = generateProgression(
+    10,
+    startNumber,
+    progressionStep,
+  );
   const randomHiddenElementIndex = generateRandom(0, progressionArray.length);
 
   const prograssionWithHiddenElement = progressionArray.slice();
-  const hiddenElement = prograssionWithHiddenElement.splice(randomHiddenElementIndex, 1, '..');
+  const hiddenElement = prograssionWithHiddenElement.splice(
+    randomHiddenElementIndex,
+    1,
+    '..',
+  );
 
   const correctAnswer = String(hiddenElement);
   const readyProgression = prograssionWithHiddenElement.join(' ');
