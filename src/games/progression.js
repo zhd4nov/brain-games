@@ -1,24 +1,27 @@
 import generateRandom from '../utils';
 import startGame from '..';
 
-const generateProgression = (length) => {
-  const startNumber = generateRandom(1, 50);
-  const progressionStep = generateRandom(-10, 20);
-
-  const bunchUpNumbers = (progression = []) => {
+const generateProgression = (length, start, step) => {
+  const bunchUpNumbers = (progression) => {
     if (progression.length === length) {
       return progression;
     }
+    if (progression.length === 0) {
+      return bunchUpNumbers([start]);
+    }
 
-    const nextNumber = progression[progression.length - 1] + progressionStep;
+    const nextNumber = progression[progression.length - 1] + step;
     return bunchUpNumbers([...progression, nextNumber]);
   };
 
-  return bunchUpNumbers([startNumber]);
+  return bunchUpNumbers([]);
 };
 
 const generateGameData = () => {
-  const progressionArray = generateProgression(10);
+  const startNumber = generateRandom(1, 50);
+  const progressionStep = generateRandom(-10, 20);
+
+  const progressionArray = generateProgression(10, startNumber, progressionStep);
   const randomHiddenElementIndex = generateRandom(0, progressionArray.length);
 
   const prograssionWithHiddenElement = progressionArray.slice();
