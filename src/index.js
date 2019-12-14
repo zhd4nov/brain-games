@@ -1,9 +1,9 @@
 import readlineSync from 'readline-sync';
 
-const roundLimit = 3;
+const roundsCount = 3;
 
-const startRound = (userName, questionGenerator, roundLimitCounter = 0) => {
-  if (roundLimitCounter === roundLimit) {
+const startRound = (userName, questionGenerator, roundsCounter = 0) => {
+  if (roundsCounter === roundsCount) {
     console.log(`Congratulations, ${userName}!`);
     return null;
   }
@@ -14,12 +14,13 @@ const startRound = (userName, questionGenerator, roundLimitCounter = 0) => {
 
   const result = questionPack.answer === userAnswer;
   if (!result) {
-    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${questionPack.answer}".\nLet's try again, ${userName}!`);
+    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${questionPack.answer}".`);
+    console.log(`Let's try again, ${userName}!`);
     return null;
   }
   console.log('Correct!');
 
-  return startRound(userName, questionGenerator, roundLimitCounter + 1);
+  return startRound(userName, questionGenerator, roundsCounter + 1);
 };
 
 const startGame = (rulles, questionGenerator) => {
