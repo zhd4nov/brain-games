@@ -16,7 +16,7 @@ const startRound = (userName, questionGenerator, roundsCounter = 0) => {
   if (!result) {
     console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${questionPack.answer}".`);
     console.log(`Let's try again, ${userName}!`);
-    return null;
+    return false;
   }
   console.log('Correct!');
 
@@ -32,7 +32,7 @@ const startGame = (rulles, questionGenerator) => {
 
   startRound(userName, questionGenerator);
 
-  return null;
+  return true;
 };
 
 export default startGame;
