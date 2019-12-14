@@ -27,21 +27,20 @@ const generateGameData = () => {
     startNumber,
     progressionStep,
   );
-  const randomHiddenElementIndex = generateRandom(0, progressionArray.length);
+  const hiddenElementIndex = generateRandom(0, progressionArray.length - 1);
 
   const prograssionWithHiddenElement = progressionArray.slice();
-  const hiddenElement = prograssionWithHiddenElement.splice(
-    randomHiddenElementIndex,
+  const correctAnswer = prograssionWithHiddenElement.splice(
+    hiddenElementIndex,
     1,
     '..',
   );
 
-  const correctAnswer = String(hiddenElement);
   const readyProgression = prograssionWithHiddenElement.join(' ');
 
   const questionPack = {
     question: readyProgression,
-    answer: correctAnswer,
+    answer: String(correctAnswer),
   };
 
   return questionPack;
