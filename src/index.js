@@ -1,20 +1,20 @@
 import readlineSync from 'readline-sync';
 
-const roundsCount = 3;
+const counter = 3;
 
 const startRound = (userName, questionGenerator, roundsCounter = 0) => {
-  if (roundsCounter === roundsCount) {
+  if (roundsCounter === counter) {
     console.log(`Congratulations, ${userName}!`);
     return true;
   }
 
-  const questionPack = questionGenerator();
-  console.log(`Question: ${questionPack.question}`);
+  const roundData = questionGenerator();
+  console.log(`Question: ${roundData.question}`);
   const userAnswer = readlineSync.question('Your answer: ');
 
-  const result = questionPack.answer === userAnswer;
+  const result = roundData.answer === userAnswer;
   if (!result) {
-    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${questionPack.answer}".`);
+    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${roundData.answer}".`);
     console.log(`Let's try again, ${userName}!`);
     return false;
   }
