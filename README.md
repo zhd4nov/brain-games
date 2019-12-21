@@ -13,11 +13,11 @@ Brain Games is a command line tool that plays with user in a math game. The exer
 > # cd frontend-project-lvl1
 > # make install
 ```
-1. Simulate package publishing with `--dry-run` option:
+2. Simulate package publishing with `--dry-run` option:
 ```
 > # make publish
 ```
-1. Create a symbolik link:
+3. Create a symbolik link:
 ```
 > # sudo npm link
 ```
