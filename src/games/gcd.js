@@ -1,4 +1,4 @@
-import generateRandom from '../utils';
+import getRandom from '../utils';
 import startGame from '..';
 
 const greatestCommonDivisor = (first, second) => {
@@ -9,16 +9,16 @@ const greatestCommonDivisor = (first, second) => {
 };
 
 const generateGameData = () => {
-  const first = generateRandom(10, 300);
-  const second = generateRandom(300, 500);
+  const first = getRandom(10, 300);
+  const second = getRandom(300, 500);
   const correctAnswer = String(greatestCommonDivisor(first, second));
   const question = `${first} ${second}`;
-  const questionPack = {
+  const gameData = {
     question,
     answer: correctAnswer,
   };
 
-  return questionPack;
+  return gameData;
 };
 
 const description = 'Find the greatest common divisor of given numbers.';

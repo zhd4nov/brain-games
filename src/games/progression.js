@@ -1,5 +1,7 @@
-import generateRandom from '../utils';
+import getRandom from '../utils';
 import startGame from '..';
+
+const progressionLength = 10;
 
 const generateProgression = (length, start, step) => {
   const bunchUpNumbers = (progression) => {
@@ -18,18 +20,16 @@ const generateProgression = (length, start, step) => {
 };
 
 const generateGameData = () => {
-  const startNumber = generateRandom(1, 50);
-  const progressionStep = generateRandom(-10, 20);
-  const progressionLength = 10;
-
-  const progressionArray = generateProgression(
+  const start = getRandom(1, 50);
+  const progressionStep = getRandom(-10, 20);
+  const progression = generateProgression(
     progressionLength,
-    startNumber,
+    start,
     progressionStep,
   );
-  const hiddenElementIndex = generateRandom(0, progressionArray.length - 1);
+  const hiddenElementIndex = getRandom(0, progression.length - 1);
 
-  const prograssionWithHiddenElement = progressionArray.slice();
+  const prograssionWithHiddenElement = progression.slice();
   const correctAnswer = prograssionWithHiddenElement.splice(
     hiddenElementIndex,
     1,
@@ -38,14 +38,14 @@ const generateGameData = () => {
 
   const readyProgression = prograssionWithHiddenElement.join(' ');
 
-  const questionPack = {
+  const gameData = {
     question: readyProgression,
     answer: String(correctAnswer),
   };
 
-  return questionPack;
+  return gameData;
 };
 
-const progressionRulles = 'What number is missing in the progression?';
+const description = 'What number is missing in the progression?';
 
-export default () => startGame(progressionRulles, generateGameData);
+export default () => startGame(description, generateGameData);

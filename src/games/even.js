@@ -1,17 +1,17 @@
-import generateRandom from '../utils';
+import getRandom from '../utils';
 import startGame from '..';
 
 const isEven = (number) => number % 2 === 0;
 
 const generateGameData = () => {
-  const questionNumber = generateRandom(1, 250);
-  const correctAnswer = isEven(questionNumber) ? 'yes' : 'no';
-  const questionPack = {
-    question: questionNumber,
+  const question = getRandom(1, 250);
+  const correctAnswer = isEven(question) ? 'yes' : 'no';
+  const gameData = {
+    question,
     answer: correctAnswer,
   };
 
-  return questionPack;
+  return gameData;
 };
 const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
