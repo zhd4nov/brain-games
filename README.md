@@ -56,12 +56,3 @@ Just start playing with a command:
 [3]: https://asciinema.org/a/HBYwCnUTugwbGIm3X8JksCLVl
 [4]: https://asciinema.org/a/z2DDFDgCpbM8THEL9gxfsOXRr
 [5]: https://asciinema.org/a/UiStwedaEN5Uz9j80lkNOryFF
-
-### Meta
-|*Version*|*Contributors*|*Issues*|*Telegram*|
-|:---------:|:---------------:|:-------:|:----------:|
-|**0. 1. 0**|[1 Contributor][6]|[New issue][7]|[@zhd4nov][8]|
-
-[6]: https://github.com/zhd4nov/frontend-project-lvl1/graphs/contributors
-[7]: https://github.com/zhd4nov/frontend-project-lvl1/issues
-[8]: https://t.me/zhd4nov
