@@ -1,16 +1,16 @@
 import readlineSync from 'readline-sync';
 
-const startGame = (rulles, generateGameData) => {
+const roundsCount = 3;
+
+const startGame = (description, generateGameData) => {
   console.log('Welcome to the Brain Games!');
-  console.log(rulles);
+  console.log(description);
 
   const userName = readlineSync.question('\nMay I have your name? ');
   console.log(`Hello, ${userName}!\n`);
 
-  const maxCounter = 3;
-
   const startRound = (generateRoundData, counter = 0) => {
-    if (counter === maxCounter) {
+    if (counter === roundsCount) {
       console.log(`Congratulations, ${userName}!`);
       return true;
     }
