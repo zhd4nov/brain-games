@@ -4,19 +4,19 @@ import startGame from '..';
 const progressionLength = 10;
 
 const generateProgression = (length, start, step) => {
-  const bunchUpNumbers = (progression) => {
+  const iter = (progression, acc = 1) => {
     if (progression.length === length) {
       return progression;
     }
     if (progression.length === 0) {
-      return bunchUpNumbers([start]);
+      return iter([start]);
     }
 
-    const nextNumber = progression[progression.length - 1] + step;
-    return bunchUpNumbers([...progression, nextNumber]);
+    const nextNumber = start + step * acc;
+    return iter([...progression, nextNumber], acc + 1);
   };
 
-  return bunchUpNumbers([]);
+  return iter([]);
 };
 
 const generateGameData = () => {
