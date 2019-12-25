@@ -1,11 +1,11 @@
 import getRandom from '../utils';
 import startGame from '..';
 
-const progressionLength = 10;
+const elementsCount = 10;
 
-const generateProgression = (length, start, step) => {
+const generateProgression = (start, step) => {
   const iter = (progression, acc = 1) => {
-    if (progression.length === length) {
+    if (progression.length === elementsCount) {
       return progression;
     }
     if (progression.length === 0) {
@@ -22,11 +22,7 @@ const generateProgression = (length, start, step) => {
 const generateGameData = () => {
   const start = getRandom(1, 50);
   const progressionStep = getRandom(-10, 20);
-  const progression = generateProgression(
-    progressionLength,
-    start,
-    progressionStep,
-  );
+  const progression = generateProgression(start, progressionStep);
   const hiddenElementIndex = getRandom(0, progression.length - 1);
 
   const prograssionWithHiddenElement = progression.slice();
