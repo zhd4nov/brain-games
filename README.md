@@ -1,5 +1,5 @@
 ## Brain Games
-[![Maintainability](https://api.codeclimate.com/v1/badges/d37a95bbac3ade96371f/maintainability)](https://codeclimate.com/github/zhd4nov/frontend-project-lvl1/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/d37a95bbac3ade96371f/test_coverage)](https://codeclimate.com/github/zhd4nov/frontend-project-lvl1/test_coverage) [![Build Status](https://travis-ci.org/zhd4nov/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/zhd4nov/frontend-project-lvl1)
+[![Maintainability](https://api.codeclimate.com/v1/badges/d37a95bbac3ade96371f/maintainability)](https://codeclimate.com/github/zhd4nov/frontend-project-lvl1/maintainability) [![Build Status](https://travis-ci.org/zhd4nov/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/zhd4nov/frontend-project-lvl1)
 
 Brain Games is a command line tool that plays with user in a math game. The exercises are random and simple. The Brain Games has five game scenarios now.
 
