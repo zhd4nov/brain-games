@@ -1,22 +1,19 @@
 import getRandom from '../utils';
 import startGame from '..';
 
-const elementsCount = 10;
+const progressionLength = 10;
 
 const generateProgression = (start, step) => {
-  const iter = (progression, acc = 1) => {
-    if (progression.length === elementsCount) {
+  const iter = (progression, length) => {
+    if (length === progressionLength) {
       return progression;
     }
-    if (progression.length === 0) {
-      return iter([start]);
-    }
 
-    const nextNumber = start + step * acc;
-    return iter([...progression, nextNumber], acc + 1);
+    const nextNumber = start + step * length;
+    return iter([...progression, nextNumber], length + 1);
   };
 
-  return iter([]);
+  return iter([], 0);
 };
 
 const generateGameData = () => {
@@ -25,17 +22,17 @@ const generateGameData = () => {
   const progression = generateProgression(start, progressionStep);
   const hiddenElementIndex = getRandom(0, progression.length - 1);
 
-  const prograssionWithHiddenElement = progression.slice();
-  const correctAnswer = prograssionWithHiddenElement.splice(
+  const progressionWithHiddenElement = progression.slice();
+  const correctAnswer = progressionWithHiddenElement.splice(
     hiddenElementIndex,
     1,
     '..',
   );
 
-  const readyProgression = prograssionWithHiddenElement.join(' ');
+  const question = progressionWithHiddenElement.join(' ');
 
   const gameData = {
-    question: readyProgression,
+    question,
     answer: String(correctAnswer),
   };
 
