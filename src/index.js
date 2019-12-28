@@ -9,13 +9,13 @@ const startGame = (description, generateGameData) => {
   const userName = readlineSync.question('\nMay I have your name? ');
   console.log(`Hello, ${userName}!\n`);
 
-  const startRound = (generateRoundData, counter = 0) => {
+  const startRound = (counter) => {
     if (counter === roundsCount) {
       console.log(`Congratulations, ${userName}!`);
       return true;
     }
 
-    const roundData = generateRoundData();
+    const roundData = generateGameData();
     console.log(`Question: ${roundData.question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
@@ -27,10 +27,10 @@ const startGame = (description, generateGameData) => {
     }
     console.log('Correct!');
 
-    return startRound(generateRoundData, counter + 1);
+    return startRound(counter + 1);
   };
 
-  return startRound(generateGameData);
+  return startRound(0);
 };
 
 export default startGame;
