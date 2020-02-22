@@ -26,33 +26,27 @@ Brain Games is a command line tool that plays with user in a math game. The exer
 
 Just start playing with a command:
 
-- Is the number even? [>> watch the example <<][1]
+- Is the number even?
 ```
 > # brain-even
 ```
 
-- Arithmetic. [>> watch the example <<][2]
+- Arithmetic.
 ```
 > # brain-calc
 ```
 
-- Greatest common divisor. [>> watch the example <<][3]
+- Greatest common divisor.
 ```
 > # brain-gcd
 ```
 
-- Find the missing element. [>> watch the example <<][4]
+- Find the missing element.
 ```
 > # brain-progression
 ```
 
-- Is a prime? [>> watch the example <<][5]
+- Is a prime?
 ```
 > # brain-prime
 ```
-
-[1]: https://asciinema.org/a/KcYOs1lae45W3NufyZlQRpFjH
-[2]: https://asciinema.org/a/pg1xBT8MqZnBiTRBzahj58Ulh
-[3]: https://asciinema.org/a/HBYwCnUTugwbGIm3X8JksCLVl
-[4]: https://asciinema.org/a/z2DDFDgCpbM8THEL9gxfsOXRr
-[5]: https://asciinema.org/a/UiStwedaEN5Uz9j80lkNOryFF
